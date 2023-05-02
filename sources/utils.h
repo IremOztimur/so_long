@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iremoztimur <iremoztimur@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:41:59 by ioztimur          #+#    #+#             */
-/*   Updated: 2023/04/28 21:05:15 by ioztimur         ###   ########.fr       */
+/*   Updated: 2023/04/30 16:37:24 by iremoztimur      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,11 @@ char	**read_map(char *path);
 void	ft_countmap(char *path);
 void	init_game(t_game *game, char *path);
 void	put_img(t_game *game, int x, int y);
+void	exit_game(t_game *game);
+void	player_control(t_game	*game);
+void	wall_control(t_game *game);
+void	gate_control(t_game *game);
+void	trash_control(t_game *game);
+void	char_control(t_game *game);
 
 #endif

@@ -5,7 +5,9 @@ MLX = ./utils/mlx/libmlx.a
 LIB = ./utils/Libraries/utils.a
 SRCS = sources/main.c \
 		sources/control.c \
-		sources/maps.c
+		sources/maps.c \
+		sources/images.c \
+		sources/control_two.c
 
 all: ${MLX} ${NAME}
 
