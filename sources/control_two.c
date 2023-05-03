@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control_two.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iremoztimur <iremoztimur@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 00:17:36 by iremoztimur       #+#    #+#             */
-/*   Updated: 2023/04/30 16:36:56 by iremoztimur      ###   ########.fr       */
+/*   Updated: 2023/05/03 04:43:52 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ void	trash_control(t_game *game)
 	int	j;
 
 	i = 0;
-	while (game->map.matrix[i++])
+	game->data.c = 0;
+	while (i < game->map.height)
 	{
 		j = 0;
-		while (game->map.matrix[i][j])
+		while (j < game->map.width)
 		{
 			if (game->map.matrix[i][j] == 'C')
 				game->data.c += 1;
 			j++;
 		}
+		i++;
 	}
 	if (game->data.c <= 0)
 	{
@@ -41,10 +43,10 @@ void	char_control(t_game *game)
 	int	j;
 
 	i = 0;
-	while (game->map.matrix[i++])
+	while (i < game->map.height)
 	{
 		j = 0;
-		while (game->map.matrix[i][j])
+		while (j < game->map.width)
 		{
 			if (game->map.matrix[i][j] != '1' &&
 			game->map.matrix[i][j] != '0' &&
@@ -57,5 +59,6 @@ void	char_control(t_game *game)
 			}
 			j++;
 		}
+		i++;
 	}
 }

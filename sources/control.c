@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   control.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iremoztimur <iremoztimur@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:24 by iremoztimur       #+#    #+#             */
-/*   Updated: 2023/04/30 00:18:34 by iremoztimur      ###   ########.fr       */
+/*   Updated: 2023/05/03 04:40:04 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,24 @@ void	file_control(char *path)
 }
 
 //to check there is a player
-void	player_control(t_game	*game)
+void	player_control(t_game *game)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (game->map.matrix[i])
+	game->data.p = 0;
+	while (i < game->map.height)
 	{
 		j = 0;
-		while (game->map.matrix[i][j])
+		while (j < game->map.width)
 		{
 			if (game->map.matrix[i][j] == 'P')
+			{
+				game->player.y = i * 64;
+				game->player.x = j * 64;
 				game->data.p += 1;
+			}
 			j++;
 		}
 		i++;
@@ -69,22 +74,22 @@ void	player_control(t_game	*game)
 //to check the map surrounded with the walls
 void	wall_control(t_game *game)
 {
-	//check the rows
 	int	i;
 
 	i = 0;
-	while (game->map.matrix[0][i++])
+	while (i < game->map.width)
 	{
 		if (game->map.matrix[0][i] != '1' ||
 		game->map.matrix[game->map.height - 1][i] != '1')
 		{
+			ft_printf("%d\n", i);
 			ft_printf("The map is invalid !!");
 			exit_game(game);
 		}
+		i++;
 	}
-	//check the columns
 	i = 0;
-	while (game->map.matrix[++i])
+	while (i < game->map.height)
 	{
 		if (game->map.matrix[i][0] != '1' ||
 		game->map.matrix[i][game->map.width - 1] != '1')
@@ -92,6 +97,7 @@ void	wall_control(t_game *game)
 			ft_printf("The map is invalid !!");
 			exit_game(game);
 		}
+		i++;
 	}
 }
 
@@ -102,10 +108,11 @@ void	gate_control(t_game *game)
 	int	j;
 
 	i = 0;
-	while (game->map.matrix[i])
+	game->data.e = 0;
+	while (i < game->map.height)
 	{
 		j = 0;
-		while (game->map.matrix[i][j])
+		while (j < game->map.width)
 		{
 			if (game->map.matrix[i][j] == 'E')
 				game->data.e += 1;
@@ -118,5 +125,4 @@ void	gate_control(t_game *game)
 		ft_printf("Your map is invalid!!");
 		exit_game(game);
 	}
-
 }

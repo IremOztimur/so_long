@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iremoztimur <iremoztimur@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:39:58 by iremoztimur       #+#    #+#             */
-/*   Updated: 2023/04/30 16:37:30 by iremoztimur      ###   ########.fr       */
+/*   Updated: 2023/05/03 05:08:54 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,24 @@
 
 void	exit_game(t_game *game)
 {
+	mlx_clear_window(game->mlx, game->win);
 	mlx_destroy_window(game->mlx, game->win);
 	exit(1);
 }
 
-void	init_game(t_game *game, char *path)
+void	init_game(t_game *game)
 {
-	int		x;
-	int		y;
-	t_game	win;
-
-	x = 0;
-	y = 0;
-	win.map.matrix = read_map(path);
-	put_img(game, x, y);
+	game->map.matrix = read_map(game);
+	game->map.clone = read_map(game);
+	put_img(game, 0, 0);
 	player_control(game);
 	wall_control(game);
 	gate_control(game);
 	trash_control(game);
 	char_control(game);
+	is_valid_map(game, game->player.x / 64, game->player.y / 64);
+	//validation(game, 0, 0);
+	ft_printf("FFFFFFF\n");
 }
 
 int	main(int argc, char **av)
@@ -41,9 +40,16 @@ int	main(int argc, char **av)
 
 	if (argc == 2)
 	{
+		game = ft_calloc(1, sizeof(t_game));
 		path_control(av[1]);
 		file_control(av[1]);
-		init_game(game, av[1]);
+		game->map.path = av[1];
+		init_game(game);
+		ft_printf("basarili\n");
+		render_map(game);
+		ft_printf("helalllll <3\n");
 		mlx_loop(game->mlx);
 	}
+	else
+		ft_printf("2 arguman gir");
 }

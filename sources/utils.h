@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iremoztimur <iremoztimur@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 16:41:59 by ioztimur          #+#    #+#             */
-/*   Updated: 2023/04/30 16:37:24 by iremoztimur      ###   ########.fr       */
+/*   Updated: 2023/05/03 02:43:31 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 
 typedef struct s_textures
 {
-
 	void	*chr_left;
 	void	*chr_curr;
 	void	*chr_right;
@@ -45,13 +44,17 @@ typedef struct s_data
 	int	e;
 	int	c;
 	int	finish;
+	int	gate_x;
+	int	gate_y;
 }	t_data;
 
 typedef struct s_map
 {
 	char	**matrix;
+	char	**clone;
 	int		width;
 	int		height;
+	char	*path;
 }	t_map;
 
 typedef struct s_game
@@ -64,7 +67,7 @@ typedef struct s_game
 	int			width;
 	void		*mlx;
 	void		*win;
-	char		*steps_text;
+	char		*score;
 }	t_game;
 
 # define KEY_W 13
@@ -76,9 +79,9 @@ typedef struct s_game
 
 void	file_control(char *path);
 void	path_control(char *path);
-char	**read_map(char *path);
-void	ft_countmap(char *path);
-void	init_game(t_game *game, char *path);
+char	**read_map(t_game *game);
+void	ft_countmap(t_game *game);
+void	init_game(t_game *game);
 void	put_img(t_game *game, int x, int y);
 void	exit_game(t_game *game);
 void	player_control(t_game	*game);
@@ -86,5 +89,10 @@ void	wall_control(t_game *game);
 void	gate_control(t_game *game);
 void	trash_control(t_game *game);
 void	char_control(t_game *game);
+void	is_valid_map(t_game *game, int x, int y);
+void	validation(t_game *game, int x, int y);
+void	put_render(t_game *game, char c, int x, int y);
+void	put_score(t_game *game);
+void	render_map(t_game *game);
 
 #endif
