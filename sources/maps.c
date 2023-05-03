@@ -6,7 +6,7 @@
 /*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:52:13 by ioztimur          #+#    #+#             */
-/*   Updated: 2023/05/03 04:56:04 by ioztimur         ###   ########.fr       */
+/*   Updated: 2023/05/03 05:50:23 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,13 @@
 void	is_valid_map(t_game *game, int x, int y)
 {
 	game->map.clone[y][x] = '*';
-	if (game->map.clone[y][x - 1] != '1' && game->map.clone[y][x - 1] != '*'
-	&& game->map.clone[y][x - 1] != 'E' && game->map.clone[y][x - 1] != 'C')
+	if (game->map.clone[y][x - 1] != '1' && game->map.clone[y][x - 1] != '*')
 		is_valid_map(game, x - 1, y);
-	if (game->map.clone[y][x + 1] != '1' && game->map.clone[y][x + 1] != '*'
-	&& game->map.clone[y][x + 1] != 'E' && game->map.clone[y][x + 1] != 'C')
+	if (game->map.clone[y][x + 1] != '1' && game->map.clone[y][x + 1] != '*')
 		is_valid_map(game, x + 1, y);
-	if (game->map.clone[y - 1][x] != '1' && game->map.clone[y - 1][x] != '*'
-	&& game->map.clone[y - 1][x] != 'E' && game->map.clone[y - 1][x] != 'C')
+	if (game->map.clone[y - 1][x] != '1' && game->map.clone[y - 1][x] != '*')
 		is_valid_map(game, x, y - 1);
-	if (game->map.clone[y + 1][x] != '1' && game->map.clone[y + 1][x] != '*'
-	&& game->map.clone[y + 1][x] != 'E' && game->map.clone[y + 1][x] != 'C')
+	if (game->map.clone[y + 1][x] != '1' && game->map.clone[y + 1][x] != '*')
 		is_valid_map(game, x, y + 1);
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:39:58 by iremoztimur       #+#    #+#             */
-/*   Updated: 2023/05/03 05:25:32 by ioztimur         ###   ########.fr       */
+/*   Updated: 2023/05/03 05:51:56 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_game(t_game *game)
 	trash_control(game);
 	char_control(game);
 	is_valid_map(game, game->player.x / 64, game->player.y / 64);
-	//validation(game, 0, 0);
+	validation(game, 0, 0);
 }
 
 int	main(int argc, char **av)
