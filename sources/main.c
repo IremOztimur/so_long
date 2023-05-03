@@ -6,7 +6,7 @@
 /*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:39:58 by iremoztimur       #+#    #+#             */
-/*   Updated: 2023/05/03 05:08:54 by ioztimur         ###   ########.fr       */
+/*   Updated: 2023/05/03 05:25:32 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	init_game(t_game *game)
 	char_control(game);
 	is_valid_map(game, game->player.x / 64, game->player.y / 64);
 	//validation(game, 0, 0);
-	ft_printf("FFFFFFF\n");
 }
 
 int	main(int argc, char **av)
@@ -45,9 +44,7 @@ int	main(int argc, char **av)
 		file_control(av[1]);
 		game->map.path = av[1];
 		init_game(game);
-		ft_printf("basarili\n");
 		render_map(game);
-		ft_printf("helalllll <3\n");
 		mlx_loop(game->mlx);
 	}
 	else

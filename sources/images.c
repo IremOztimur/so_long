@@ -6,7 +6,7 @@
 /*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:25:14 by ioztimur          #+#    #+#             */
-/*   Updated: 2023/05/03 05:23:21 by ioztimur         ###   ########.fr       */
+/*   Updated: 2023/05/03 05:25:19 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ void	put_img(t_game *game, int x, int y)
 
 void	put_render(t_game *game, char c, int x, int y)
 {
-	ft_printf("ehe\n");
 	mlx_put_image_to_window(game->mlx, game->win, \
 	game->texture.background_img, x, y);
-	ft_printf("check4\n");
 	if (c == '1')
 	{
 		mlx_put_image_to_window(game->mlx, game->win, \
@@ -83,15 +81,11 @@ void	render_map(t_game *game)
 	y = 0;
 	while (i < game->map.height)
 	{
-		ft_printf("check1\n");
 		j = 0;
 		x = 0;
 		while (j < game->map.width)
 		{
-			ft_printf("check2\n");
-			ft_printf("EEEEE: %c\n", game->map.matrix[i][j]);
 			put_render(game, game->map.matrix[i][j], x, y);
-			ft_printf("check3\n");
 			put_score(game);
 			x += 64;
 			j++;
