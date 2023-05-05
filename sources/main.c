@@ -6,17 +6,18 @@
 /*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:39:58 by iremoztimur       #+#    #+#             */
-/*   Updated: 2023/05/03 05:51:56 by ioztimur         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:13:02 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void	exit_game(t_game *game)
+int	exit_game(t_game *game)
 {
 	mlx_clear_window(game->mlx, game->win);
 	mlx_destroy_window(game->mlx, game->win);
 	exit(1);
+	return (0);
 }
 
 void	init_game(t_game *game)
@@ -45,8 +46,13 @@ int	main(int argc, char **av)
 		game->map.path = av[1];
 		init_game(game);
 		render_map(game);
+		mlx_hook(game->win, 2, (1L << 0), walk, game);
+		mlx_hook(game->win, 17, 0L, exit_game, game);
 		mlx_loop(game->mlx);
 	}
 	else
+	{
 		ft_printf("2 arguman gir");
+		exit(1);
+	}
 }

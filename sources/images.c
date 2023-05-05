@@ -6,7 +6,7 @@
 /*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 17:25:14 by ioztimur          #+#    #+#             */
-/*   Updated: 2023/05/03 05:25:19 by ioztimur         ###   ########.fr       */
+/*   Updated: 2023/05/05 17:16:20 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	render_map(t_game *game)
 
 	i = 0;
 	y = 0;
+	mlx_clear_window(game->mlx, game->win);
 	while (i < game->map.height)
 	{
 		j = 0;

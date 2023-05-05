@@ -6,7 +6,7 @@
 /*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 00:17:36 by iremoztimur       #+#    #+#             */
-/*   Updated: 2023/05/03 04:43:52 by ioztimur         ###   ########.fr       */
+/*   Updated: 2023/05/05 20:28:44 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,22 @@ void	char_control(t_game *game)
 		}
 		i++;
 	}
+}
+
+void	map_control(t_game *game)
+{
+	int		fd;
+	char	*buffer;
+	size_t	value;
+
+	buffer = malloc(sizeof(char) * 100);
+	fd = open(game->map.path, O_RDONLY);
+	value = read(fd, buffer, 100);
+	if (value <= 0 || value == '\0')
+	{
+		ft_printf("The map is invalid!");
+		close(fd);
+		exit (1);
+	}
+	close(fd);
 }

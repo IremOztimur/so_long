@@ -6,7 +6,7 @@
 /*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 19:13:24 by iremoztimur       #+#    #+#             */
-/*   Updated: 2023/05/03 04:40:04 by ioztimur         ###   ########.fr       */
+/*   Updated: 2023/05/05 20:36:25 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	wall_control(t_game *game)
 		if (game->map.matrix[0][i] != '1' ||
 		game->map.matrix[game->map.height - 1][i] != '1')
 		{
-			ft_printf("%d\n", i);
 			ft_printf("The map is invalid !!");
 			exit_game(game);
 		}

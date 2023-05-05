@@ -7,7 +7,8 @@ SRCS = sources/main.c \
 		sources/control.c \
 		sources/maps.c \
 		sources/images.c \
-		sources/control_two.c
+		sources/control_two.c \
+		sources/functionality.c
 
 all: ${MLX} ${NAME}
 

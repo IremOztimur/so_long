@@ -6,7 +6,7 @@
 /*   By: ioztimur <ioztimur@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:52:13 by ioztimur          #+#    #+#             */
-/*   Updated: 2023/05/03 05:50:23 by ioztimur         ###   ########.fr       */
+/*   Updated: 2023/05/05 20:28:25 by ioztimur         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	ft_countmap(t_game *game)
 
 	game->map.height = 0;
 	fd = open(game->map.path, O_RDONLY);
+	map_control(game);
 	line = get_next_line(fd);
 	game->map.width = ft_strlen(line) - 1;
 	while (line)
